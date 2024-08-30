@@ -12,6 +12,7 @@ export type Movie = {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  release_date: any;
 };
 
 export type SearchResults = {
