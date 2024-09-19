@@ -12,11 +12,12 @@ const fetcher = async (term: string) => {
 
 function AISuggestions({ term }: { term: string }) {
   const { data, error, isLoading, isValidating } = useSWR(
-    "suggestions",
+    term ? `/api/suggestions?term=${term}` : null,  // Key includes `term` to cache different results
     () => fetcher(term),
     {
       revalidateOnFocus: false,
       revalidateOnReconnect: false,
+      dedupingInterval: 60 * 60 * 24, // cache for 24 hours
     }
   );
 
@@ -30,7 +31,7 @@ function AISuggestions({ term }: { term: string }) {
       );
 
     if (error) return <>Error...</>;
-    
+
     if (!data || !data.message) return <>No data</>;
 
     return (
