@@ -1,5 +1,4 @@
 import { ChevronDown } from "lucide-react";
-import Link from "next/link";
 
 import {
   DropdownMenu,
@@ -9,9 +8,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Link } from "@/src/i18n/routing";
 import { Genres } from "@/types";
 
 async function GenreDropdown() {
+  // TODO: move out from component
   const url = "https://api.themoviedb.org/3/genre/movie/list";
   const options: RequestInit = {
     method: "GET",

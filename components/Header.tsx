@@ -1,7 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
+
+import { Link } from "@/src/i18n/routing";
 
 import GenreDropdown from "./GenreDropdown";
+import LanguageSelector from "./LanguageSelector";
 import SearchInput from "./SearchInput";
 import { ThemeToggler } from "./ThemeToggler";
 
@@ -19,6 +21,7 @@ function Header() {
       </Link>
 
       <div className="flex space-x-2">
+        <LanguageSelector />
         <GenreDropdown />
         <SearchInput />
         <ThemeToggler />
