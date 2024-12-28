@@ -5,7 +5,7 @@ import { Link } from "@/src/i18n/routing";
 import GenreDropdown from "./GenreDropdown";
 import LanguageSelector from "./LanguageSelector";
 import SearchInput from "./SearchInput";
-import { ThemeToggler } from "./ThemeToggler";
+// import { ThemeToggler } from "./ThemeToggler";
 
 function Header() {
   return (
@@ -24,7 +24,7 @@ function Header() {
         <LanguageSelector />
         <GenreDropdown />
         <SearchInput />
-        <ThemeToggler />
+        {/* <ThemeToggler /> */}
       </div>
     </header>
   );
