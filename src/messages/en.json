@@ -4,6 +4,12 @@
     "topRated": "Top Rated",
     "popular": "Popular",
     "en": "English",
-    "bg": "Bulgarian"
+    "bg": "Bulgarian",
+    "genre": "Genre",
+    "selectGenre": "Select a genre",
+    "search": "Search...",
+    "movies": "Мovies",
+    "mayAlsoLike": "You may also like",
+    "resultsFor": "Results for"
   }
 }

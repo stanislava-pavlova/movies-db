@@ -6,7 +6,7 @@ import { getMessages } from "next-intl/server";
 
 import Header from "@/components/Header";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
-import { routing } from "@/src/i18n/routing";
+import { localeMapping, routing } from "@/src/i18n/routing";
 
 import type { Metadata } from "next";
 
@@ -32,9 +32,10 @@ export default async function RootLayout({
   // Providing all messages to the client
   // side is the easiest way to get started
   const messages = await getMessages();
+  const language = localeMapping[locale] || locale;
 
   return (
-    <html lang={locale}>
+    <html lang={language}>
       <body className="bg-white dark:bg-[#1A1C29]">
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider

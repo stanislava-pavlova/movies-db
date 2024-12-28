@@ -1,6 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -14,6 +15,7 @@ const formSchema = z.object({
 });
 
 function SearchInput() {
+  const t = useTranslations("common");
   const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -37,7 +39,7 @@ function SearchInput() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input placeholder="Search..." {...field} />
+                <Input placeholder={t("search")} {...field} />
               </FormControl>
             </FormItem>
           )}

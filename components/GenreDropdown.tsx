@@ -1,4 +1,5 @@
 import { ChevronDown } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 import {
   DropdownMenu,
@@ -12,6 +13,8 @@ import { Link } from "@/src/i18n/routing";
 import { Genres } from "@/types";
 
 async function GenreDropdown() {
+  const t = await getTranslations("common");
+
   // TODO: move out from component
   const url = "https://api.themoviedb.org/3/genre/movie/list";
   const options: RequestInit = {
@@ -31,11 +34,11 @@ async function GenreDropdown() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="text-white flex justify-center items-center">
-        Genre
+        {t("genre")}
         <ChevronDown className="ml-1" />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuLabel>Select a Genre</DropdownMenuLabel>
+        <DropdownMenuLabel>{t("selectGenre")}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {data.genres.map((genre) => (
           <DropdownMenuItem key={genre.id}>
