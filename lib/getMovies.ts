@@ -1,9 +1,25 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { getLocale } from "next-intl/server";
 
-import { SearchResults } from "@/types";
+import { Genre, SearchResults } from "@/types";
 
-async function fetchFromTMDB(url: URL, cacheTime?: number) {
+const getOptions = (cacheTime?: number): RequestInit => {
+  return {
+    method: "GET",
+    headers: {
+      accept: "application/json;",
+      Authorization: `Bearer ${process.env.TMDB_API_KEY}`,
+    },
+    next: {
+      revalidate: cacheTime || 60 * 60 * 24, // 24 hours by default
+    },
+  };
+};
+
+async function fetchFromTMDB(
+  url: URL,
+  cacheTime?: number
+): Promise<SearchResults> {
   const locale = await getLocale();
   url.searchParams.set("include_adult", "false");
   url.searchParams.set("include_video", "false");
@@ -11,19 +27,10 @@ async function fetchFromTMDB(url: URL, cacheTime?: number) {
   url.searchParams.set("language", locale ?? "en-US");
   url.searchParams.set("page", "1");
 
-  const options: RequestInit = {
-    method: "GET",
-    headers: {
-      accept: "application/json;",
-      Authorization: `Bearer ${process.env.TMDB_API_KEY}`,
-    },
-    next: {
-      revalidate: cacheTime || 60 * 60 * 24, // 24 hours
-    },
-  };
+  const options = getOptions(cacheTime);
 
   const response = await fetch(url.toString(), options);
-  const data = (await response.json()) as SearchResults;
+  const data = await response.json();
 
   return data;
 }
@@ -68,6 +75,19 @@ export async function getSearchMovies(term: string) {
   const data = await fetchFromTMDB(url);
 
   return data.results;
+}
+
+export async function getGenres(): Promise<Genre[]> {
+  const url = new URL("https://api.themoviedb.org/3/genre/movie/list");
+
+  const options = getOptions();
+  const locale = await getLocale();
+  url.searchParams.set("language", locale ?? "en-US");
+
+  const response = await fetch(url.toString(), options);
+  const data = await response.json();
+
+  return data.genres;
 }
 
 export async function genearateAI(term: string | null) {
