@@ -1,4 +1,3 @@
-import { Inter } from "next/font/google";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import "./globals.css";
@@ -9,8 +8,6 @@ import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { localeMapping, routing } from "@/src/i18n/routing";
 
 import type { Metadata } from "next";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Disney+ Clone",
