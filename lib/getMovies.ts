@@ -90,15 +90,14 @@ export async function getGenres(): Promise<Genre[]> {
   return data.genres;
 }
 
-export async function genearateAI(term: string | null) {
+export async function genearateAI(term: string | null, locale: string) {
   const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY ?? "");
 
   const prompt = `I like ${term}.`;
 
   const model = genAI.getGenerativeModel({
     model: "gemini-1.5-flash",
-    systemInstruction:
-      "You are a digital video assistant working for services such as Netflix, Disney Plus & Amazon Prime Video. Your job is to provide suggestions based on the videos the user specifies. Provide an quirky breakdown of what the user should watch next! It should only list the names of the films after the introduction. Keep the response short and sweet! Always list at least 3 films as suggestions. If the user mentions a genre, you should provide a suggestion based on that genre. Movies should be listed as follows: 1) Movie 1; 2) Movie 2;",
+    systemInstruction: `You are a digital video assistant working for services such as Netflix, Disney Plus & Amazon Prime Video. Your job is to provide suggestions based on the videos the user specifies. Provide an quirky breakdown of what the user should watch next! It should only list the names of the films after the introduction. Keep the response short and sweet! Always list at least 3 films as suggestions. If the user mentions a genre, you should provide a suggestion based on that genre. Movies should be listed as follows: 1) Movie 1; 2) Movie 2; Translate the results based on this locae: ${locale}`,
   });
 
   const data = await model.generateContent(prompt);
