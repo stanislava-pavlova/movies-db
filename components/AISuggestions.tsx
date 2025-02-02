@@ -1,8 +1,10 @@
 "use client"; // not needed if we do not use swr
+
+import { useLocale, useTranslations } from "next-intl";
 import useSWR from "swr";
 
-const fetcher = async (term: string) => {
-  return fetch("/api/suggestions?term=" + term).then((res) => {
+const fetcher = async (term: string, locale: string) => {
+  return fetch(`/${locale}/suggestions?term=${term}`).then((res) => {
     if (!res.ok) {
       throw new Error("Failed to fetch data");
     }
@@ -11,9 +13,12 @@ const fetcher = async (term: string) => {
 };
 
 function AISuggestions({ term }: { term: string }) {
+  const locale = useLocale();
+  const t = useTranslations("common");
+
   const { data, error, isLoading, isValidating } = useSWR(
-    term ? `/api/suggestions?term=${term}` : null,  // Key includes `term` to cache different results
-    () => fetcher(term),
+    term ? `/${locale}/suggestions?term=${term}` : null, // Key includes `term` to cache different results
+    () => fetcher(term, locale),
     {
       revalidateOnFocus: false,
       revalidateOnReconnect: false,
@@ -26,20 +31,20 @@ function AISuggestions({ term }: { term: string }) {
       return (
         <>
           <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-white" />
-          <p className="text-sm text-gray-400">AI Assistant is thinking...</p>
+          <p className="text-sm text-gray-400">{t("aiLoading")}</p>
         </>
       );
 
-    if (error) return <>Error...</>;
+    if (error) return <>{t("error")}</>;
 
-    if (!data || !data.message) return <>No data</>;
+    if (!data || !data.message) return <>{t("error")}</>;
 
     return (
       <>
         <div className="animate-pulse rounded-full bg-gradient-to-t from-white h-10 w-10 border-2 flex-shrink-0 border-white" />
 
         <div>
-          <p className="text-sm text-gray-400">AI Gemini Suggests: </p>
+          <p className="text-sm text-gray-400">{t("aiSuggests")}</p>
           <p className="italic text-xl">{data.message}</p>
         </div>
       </>
