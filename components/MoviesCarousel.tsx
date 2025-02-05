@@ -11,11 +11,11 @@ type Props = {
 function MoviesCarousel({ movies, title, isVertical }: Props) {
   return (
     <div className="z-50">
-      <h2 className="text-xl font-bold px-10 py-2">{title}</h2>
+      <h2 className="text-xl font-bold py-2">{title}</h2>
 
       <div
         className={cn(
-          "flex space-x-4 overflow-scroll scrollbar-hide px-5 lg:px-10 py-5 ",
+          "flex space-x-4 overflow-scroll scrollbar-hide py-5 ",
           isVertical && "flex-col space-x-0 space-y-12"
         )}
       >
@@ -25,7 +25,7 @@ function MoviesCarousel({ movies, title, isVertical }: Props) {
                 key={movie.id}
                 className={cn(
                   isVertical &&
-                    "flex flex-col space-y-5 space-x-5 mb-5 items-center lg:flex-row"
+                    "flex flex-col space-y-5 md:space-x-5 mb-5 items-center lg:flex-row"
                 )}
               >
                 <MovieCard movie={movie} />

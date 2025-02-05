@@ -16,8 +16,8 @@ async function LanguageSelector() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="flex items-center gap-2">
-        {t(localeMapping[locale])} <ChevronDown />
+      <DropdownMenuTrigger className="flex items-center cursor-pointer">
+        {t(localeMapping[locale])} <ChevronDown className="ml-1" />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         {Object.entries(localeMapping).map(([fullLocale, shortLocale]) => (
