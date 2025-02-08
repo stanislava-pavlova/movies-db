@@ -13,8 +13,6 @@ import {
 import { getGenres } from "@/lib/getMovies";
 import { Link } from "@/src/i18n/routing";
 
-import { Button } from "./ui/button";
-
 async function GenreDropdown() {
   const t = await getTranslations("common");
 
@@ -23,9 +21,7 @@ async function GenreDropdown() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="text-white flex justify-center items-center">
-        <Button variant="outline">
-          {t("genre")} <ChevronDown className="ml-1" />
-        </Button>
+        {t("genre")} <ChevronDown className="ml-1" />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuLabel>{t("selectGenre")}</DropdownMenuLabel>
