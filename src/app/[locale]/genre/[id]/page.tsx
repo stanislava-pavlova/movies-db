@@ -27,7 +27,7 @@ async function GenrePage({ params: { id }, searchParams: { genre } }: Props) {
 
         <AISuggestions term={genre} />
 
-        <MoviesCarousel title={`Genre`} movies={movies} isVertical />
+        <MoviesCarousel title={t("genre")} movies={movies} isVertical />
       </div>
     </div>
   );
