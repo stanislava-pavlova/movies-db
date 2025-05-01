@@ -16,7 +16,7 @@ export default async function Home() {
   const popularMovies = await getPopularMovies();
 
   return (
-    <main>
+    <main className="max-w-screen-2xl mx-auto">
       {/* <h1 className="">MovieMate</h1> */}
       <CarouselBannerWrapper />
 

@@ -10,7 +10,7 @@ import SearchInput from "./SearchInput";
 function Header() {
   return (
     <header className="fixed w-full z-[70] top-0 py-5 bg-gradient-to-t from-gray-200/0 via-gray-900/25 to-gray-900">
-      <div className="w-full max-w-7xl mx-auto flex justify-between px-5 md:px-10">
+      <div className="w-full max-w-screen-2xl mx-auto flex justify-between px-5 md:px-10">
         <Link href="/" className="mr-10">
           <Image
             src="/logo.png"

@@ -34,7 +34,7 @@ export default async function RootLayout({
 
   return (
     <html lang={language}>
-      <body className="bg-white dark:bg-[#1A1C29] max-w-screen-2xl mx-auto">
+      <body className="bg-white dark:bg-[#1A1C29]">
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider
             attribute="class"
