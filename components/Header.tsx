@@ -13,11 +13,11 @@ function Header() {
       <div className="w-full max-w-7xl mx-auto flex justify-between px-5 md:px-10">
         <Link href="/" className="mr-10">
           <Image
-            src="https://links.papareact.com/a943ae"
+            src="/logo.png"
             alt="Logo"
-            width={120}
-            height={100}
-            className="cursor-pointer invert-0 dark:invert"
+            width={180}
+            height={30}
+            className="cursor-pointer"
           />
         </Link>
 
