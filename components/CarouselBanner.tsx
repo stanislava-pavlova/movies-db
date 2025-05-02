@@ -34,7 +34,7 @@ function CarouselBanner({ movies }: Props) {
               height={1080}
             />
 
-            <div className="hidden lg:inline absolute mt-0 top-0 left-0 z-20 pt-40 xl:pt-52 lg:mt-40 bg-transparent h-full w-full bg-gradient-to-r from-gray-900/90 to-transparent p-10 space-y-5 text-white">
+            <div className="lg:inline absolute mt-0 top-0 left-0 z-20 pt-40 xl:pt-52 lg:mt-40 bg-transparent h-full w-full bg-gradient-to-r from-gray-900/90 to-transparent p-10 space-y-5 text-white">
               <h2 className="text-5xl font-bold max-w-xl z-50">
                 {movie.title}
               </h2>
