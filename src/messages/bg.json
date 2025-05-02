@@ -14,6 +14,8 @@
     "error": "Възникна грешка",
     "noData": "Няма намерени резултати",
     "aiLoading": "AI асистентът мисли...",
-    "aiSuggests": "AI Gemini предлага:"
+    "aiSuggests": "AI Gemini предлага:",
+    "drawerMenu": "Меню",
+    "closeDrawer": "Затвори"
   }
 }
