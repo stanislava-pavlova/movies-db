@@ -11,12 +11,19 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import { Genre } from "@/types";
 
-import GenreDropdown from "./GenreDropdown";
+import { GenreDropdown } from "./GenreDropdown";
 import LanguageSelector from "./LanguageSelector";
 import SearchInput from "./SearchInput";
 
-async function DrawerMenu() {
+async function DrawerMenu({
+  genres,
+  locale,
+}: {
+  genres: Genre[];
+  locale: string;
+}) {
   const t = await getTranslations("common");
 
   return (
@@ -32,8 +39,8 @@ async function DrawerMenu() {
         </DrawerHeader>
         <div className="p-4 space-y-4">
           <div className="flex justify-between">
-            <LanguageSelector />
-            <GenreDropdown />
+            <LanguageSelector locale={locale} />
+            <GenreDropdown genres={genres} />
           </div>
           <SearchInput />
         </div>

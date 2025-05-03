@@ -1,15 +1,20 @@
 import Image from "next/image";
+import { getLocale } from "next-intl/server";
 
+import { getGenres } from "@/lib/getMovies";
 import { Link } from "@/src/i18n/routing";
 
 import ClientHeaderWrapper from "./ClientHeaderWrapper";
 import DrawerMenu from "../DrawerMenu";
-import GenreDropdown from "../GenreDropdown";
+import { GenreDropdown } from "../GenreDropdown";
 import LanguageSelector from "../LanguageSelector";
 import SearchInput from "../SearchInput";
 // import { ThemeToggler } from "./ThemeToggler";
 
-export default function Header() {
+export default async function Header() {
+  const genres = await getGenres();
+  const locale = await getLocale();
+
   return (
     <ClientHeaderWrapper>
       <div className="w-full max-w-screen-2xl mx-auto flex justify-between items-center px-5 md:px-10">
@@ -25,15 +30,15 @@ export default function Header() {
 
         {/* Desktop navigation */}
         <div className="hidden md:flex md:space-x-2">
-          <LanguageSelector />
-          <GenreDropdown />
+          <LanguageSelector locale={locale} />
+          <GenreDropdown genres={genres} />
           <SearchInput />
           {/* <ThemeToggler /> */}
         </div>
 
         {/* Mobile navigation */}
         <div className="md:hidden">
-          <DrawerMenu />
+          <DrawerMenu genres={genres} locale={locale} />
         </div>
       </div>
     </ClientHeaderWrapper>

@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 import { ChevronDown } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
@@ -10,37 +12,54 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { getGenres } from "@/lib/getMovies";
 import { Link } from "@/src/i18n/routing";
+import { Genre } from "@/types";
 
-async function GenreDropdown() {
-  const t = await getTranslations("common");
-
-  const genres = await getGenres();
-
+async function DropdownWrapper({
+  title,
+  menuLabel,
+  children,
+}: {
+  title: string;
+  menuLabel?: string;
+  children: ReactNode;
+}) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="text-white flex justify-center items-center">
-        {t("genre")} <ChevronDown className="ml-1" />
+        {title} <ChevronDown className="ml-1" />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuLabel>{t("selectGenre")}</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuGroup>
-          {genres?.map((genre) => (
-            <Link
-              key={genre.id}
-              href={`/genre/${genre.id}?genre=${genre.name}`}
-            >
-              <DropdownMenuItem className="cursor-pointer">
-                {genre.name}
-              </DropdownMenuItem>
-            </Link>
-          ))}
-        </DropdownMenuGroup>
+        {menuLabel && (
+          <>
+            <DropdownMenuLabel>{menuLabel}</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+          </>
+        )}
+        <DropdownMenuGroup>{children}</DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
   );
 }
 
-export default GenreDropdown;
+export default DropdownWrapper;
+
+export const GenreDropdown = async ({ genres }: { genres: Genre[] }) => {
+  const t = await getTranslations("common");
+
+  return (
+    <DropdownWrapper title={t("genre")} menuLabel={t("selectGenre")}>
+      {genres?.map((genre) => (
+        <Link
+          key={genre.id}
+          href={`/genre/${genre.id}?genre=${genre.name}`}
+          prefetch={false} // prefetches on hover
+        >
+          <DropdownMenuItem className="cursor-pointer">
+            {genre.name}
+          </DropdownMenuItem>
+        </Link>
+      ))}
+    </DropdownWrapper>
+  );
+};
