@@ -3,7 +3,7 @@ import { NextIntlClientProvider } from "next-intl";
 import "./globals.css";
 import { getMessages } from "next-intl/server";
 
-import Header from "@/components/Header";
+import Header from "@/components/header/Header";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { localeMapping, routing } from "@/src/i18n/routing";
 
