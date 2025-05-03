@@ -20,7 +20,7 @@ export default function ClientHeaderWrapper({
 
   return (
     <header
-      className={`fixed w-full z-[70] top-0 py-5 transition-colors duration-300 ${
+      className={`fixed w-full z-40 top-0 py-5 transition-colors duration-300 ${
         scrolled && "bg-gray-900 shadow-md"
       }`}
     >
