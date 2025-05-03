@@ -11,7 +11,7 @@ type Props = {
 function MoviesCarousel({ movies, title, isVertical }: Props) {
   return (
     <div className="z-50">
-      <h2 className="text-xl font-bold py-2">{title}</h2>
+      <h2 className="text-3xl font-semibold py-2 mb-6">{title}</h2>
 
       <div
         className={cn(
@@ -29,7 +29,7 @@ function MoviesCarousel({ movies, title, isVertical }: Props) {
                 )}
               >
                 <MovieCard movie={movie} />
-                <div className="max-w-2xl">
+                <div>
                   <p className="font-bold">
                     {movie.title} ({movie.release_date?.split("-")[0]})
                   </p>
