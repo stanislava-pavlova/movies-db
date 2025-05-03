@@ -29,7 +29,7 @@ function CarouselBanner({ movies }: Props) {
             <Image
               key={movie.id}
               src={getImagePath(movie.backdrop_path, true)}
-              alt=""
+              alt={movie.title}
               width={1920}
               height={1080}
             />
