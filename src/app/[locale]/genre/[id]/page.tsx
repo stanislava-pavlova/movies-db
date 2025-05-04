@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 
 import AISuggestions from "@/components/AISuggestions";
 import MoviesCarousel from "@/components/MoviesCarousel";
+import { SortDropdown } from "@/components/SortDropdown";
 import { getDiscoverMovies } from "@/lib/getMovies";
 
 type Props = {
@@ -27,7 +28,12 @@ async function GenrePage({ params: { id }, searchParams: { genre } }: Props) {
 
         <AISuggestions term={genre} />
 
-        <MoviesCarousel title={t("movies")} movies={movies} isVertical />
+        <div className="flex justify-between items-center !mb-6">
+          <h2 className="text-3xl font-semibold py-2">{t("movies")}</h2>
+          <SortDropdown genre={genre} id={id} />
+        </div>
+
+        <MoviesCarousel movies={movies} isVertical />
       </div>
     </div>
   );

@@ -30,3 +30,11 @@ export type Genre = {
 export type Genres = {
   genres: Genre[];
 };
+
+export enum SortOptions {
+  popularityDesc = "popularity.desc",
+  releaseDateDesc = "release_date.desc",
+  releaseDateAsc = "release_date.asc",
+  titleAsc = "original_title.asc",
+  titleDesc = "original_title.desc",
+}

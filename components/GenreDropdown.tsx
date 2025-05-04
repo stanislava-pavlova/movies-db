@@ -18,15 +18,19 @@ import { Genre } from "@/types";
 async function DropdownWrapper({
   title,
   menuLabel,
+  buttonClassName,
   children,
 }: {
   title: string;
   menuLabel?: string;
+  buttonClassName?: string;
   children: ReactNode;
 }) {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="text-white flex justify-center items-center">
+      <DropdownMenuTrigger
+        className={`text-white flex justify-center items-center ${buttonClassName}`}
+      >
         {title} <ChevronDown className="ml-1" />
       </DropdownMenuTrigger>
       <DropdownMenuContent>

@@ -16,6 +16,15 @@
     "aiLoading": "AI Assistant is thinking...",
     "aiSuggests": "AI Gemini Suggests:",
     "drawerMenu": "Menu",
-    "closeDrawer": "Close"
+    "closeDrawer": "Close",
+    "sortBy": "Sort by",
+    "selectSortOption": "Select sorting option",
+    "sort": {
+      "popularityDesc": "Popularity (High to Low)",
+      "releaseDateDesc": "Release Date (Newest)",
+      "releaseDateAsc": "Release Date (Oldest)",
+      "titleDesc": "Title (Z → A)",
+      "titleAsc": "Title (A → Z)"
+    }
   }
 }

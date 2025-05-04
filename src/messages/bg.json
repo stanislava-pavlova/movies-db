@@ -16,6 +16,15 @@
     "aiLoading": "AI асистентът мисли...",
     "aiSuggests": "AI Gemini предлага:",
     "drawerMenu": "Меню",
-    "closeDrawer": "Затвори"
+    "closeDrawer": "Затвори",
+    "sortBy": "Сортирай",
+    "selectSortOption": "Изберете опция за сортиране",
+    "sort": {
+      "popularityDesc": "Най-популярни",
+      "releaseDateDesc": "Дата на издаване (най-новите)",
+      "releaseDateAsc": "Дата на издаване (най-старите)",
+      "titleDesc": "Заглавие (Я → А)",
+      "titleAsc": "Заглавие (А → Я)"
+    }
   }
 }
