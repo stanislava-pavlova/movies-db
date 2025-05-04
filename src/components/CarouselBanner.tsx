@@ -24,12 +24,14 @@ function CarouselBanner({ movies }: Props) {
       className="overflow-hidden lg:-mt-40 relative cursor-pointer"
     >
       <div className="flex">
-        {movies.map((movie) => (
+        {movies.map((movie, index) => (
           <div key={movie.id} className="flex-full min-w-0 relative">
             <Image
               key={movie.id}
               src={getImagePath(movie.backdrop_path, true)}
               alt={movie.title}
+              fetchPriority={index === 0 ? "high" : "low"}
+              loading={index === 0 ? "eager" : "lazy"}
               width={1920}
               height={1080}
             />
