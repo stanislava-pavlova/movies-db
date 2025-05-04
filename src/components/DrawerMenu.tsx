@@ -1,7 +1,7 @@
 import { Menu } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/src/components/ui/button";
 import {
   Drawer,
   DrawerClose,
@@ -10,7 +10,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/components/ui/drawer";
+} from "@/src/components/ui/drawer";
 import { Genre } from "@/types";
 
 import { GenreDropdown } from "./GenreDropdown";

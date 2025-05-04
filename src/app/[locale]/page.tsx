@@ -1,12 +1,12 @@
 import { getTranslations } from "next-intl/server";
 
-import CarouselBannerWrapper from "@/components/CarouselBannerWrapper";
-import MoviesCarousel from "@/components/MoviesCarousel";
+import CarouselBannerWrapper from "@/src/components/CarouselBannerWrapper";
+import MoviesCarousel from "@/src/components/MoviesCarousel";
 import {
   getPopularMovies,
   getTopRatedMovies,
   getUpcomingMovies,
-} from "@/lib/getMovies";
+} from "@/src/lib/getMovies";
 
 export default async function Home() {
   const t = await getTranslations("common");

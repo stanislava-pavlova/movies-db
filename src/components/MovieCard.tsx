@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { getImagePath } from "@/lib/getImagePath";
+import { getImagePath } from "@/src/lib/getImagePath";
 import { Movie } from "@/types";
 
 function MovieCard({ movie }: { movie: Movie }) {

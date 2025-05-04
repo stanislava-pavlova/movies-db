@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 
-import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
+import { DropdownMenuItem } from "@/src/components/ui/dropdown-menu";
 import { Link } from "@/src/i18n/routing";
 import { SortOptions } from "@/types";
 

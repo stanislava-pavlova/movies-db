@@ -1,9 +1,9 @@
 import { getTranslations } from "next-intl/server";
 
-import AISuggestions from "@/components/AISuggestions";
-import MoviesCarousel from "@/components/MoviesCarousel";
-import { SortDropdown } from "@/components/SortDropdown";
-import { getDiscoverMovies } from "@/lib/getMovies";
+import AISuggestions from "@/src/components/AISuggestions";
+import MoviesCarousel from "@/src/components/MoviesCarousel";
+import { SortDropdown } from "@/src/components/SortDropdown";
+import { getDiscoverMovies } from "@/src/lib/getMovies";
 
 type Props = {
   params: {

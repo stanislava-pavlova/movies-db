@@ -1,4 +1,4 @@
-import { getDiscoverMovies } from "@/lib/getMovies";
+import { getDiscoverMovies } from "@/src/lib/getMovies";
 
 import CarouselBanner from "./CarouselBanner";
 

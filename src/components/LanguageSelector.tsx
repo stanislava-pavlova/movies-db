@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 
-import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
+import { DropdownMenuItem } from "@/src/components/ui/dropdown-menu";
 import { localeMapping } from "@/src/i18n/routing";
 
 import DropdownWrapper from "./GenreDropdown";

@@ -1,4 +1,4 @@
-import { genearateAI } from "@/lib/getMovies";
+import { genearateAI } from "@/src/lib/getMovies";
 
 export async function GET(
   request: Request,

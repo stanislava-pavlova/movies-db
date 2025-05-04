@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { getLocale } from "next-intl/server";
 
-import { getGenres } from "@/lib/getMovies";
+import { getGenres } from "@/src/lib/getMovies";
 import { Link } from "@/src/i18n/routing";
 
 import ClientHeaderWrapper from "./ClientHeaderWrapper";
