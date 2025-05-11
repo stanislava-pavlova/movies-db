@@ -41,7 +41,12 @@ function AISuggestions({ term }: { term: string }) {
 
     return (
       <>
-        <div className="hidden md:block animate-pulse rounded-full bg-gradient-to-t from-white h-10 w-10 border-2 flex-shrink-0 border-white" />
+        <div
+          className="hidden md:block w-12 h-14 flex-shrink-0 bg-gradient-to-tr from-purple-500 to-sky-400 animate-pulse"
+          style={{
+            clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
+          }}
+        ></div>
 
         <div>
           <p className="text-sm text-gray-400 mb-2">{t("aiSuggests")}</p>
