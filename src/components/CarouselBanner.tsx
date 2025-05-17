@@ -19,24 +19,25 @@ function CarouselBanner({ movies }: Props) {
   ]);
 
   return (
-    <div
-      ref={emblaRef}
-      className="overflow-hidden lg:-mt-40 relative cursor-pointer"
-    >
+    <div ref={emblaRef} className="overflow-hidden relative cursor-pointer">
       <div className="flex">
         {movies.map((movie, index) => (
           <div key={movie.id} className="flex-full min-w-0 relative">
             <Image
               key={movie.id}
-              src={getImagePath(movie.backdrop_path, true)}
+              src={getImagePath({
+                imagePath: movie.backdrop_path,
+                size: "w1920",
+              })}
               alt={movie.title}
               fetchPriority={index === 0 ? "high" : "low"}
               loading={index === 0 ? "eager" : "lazy"}
               width={1920}
               height={1080}
+              className="object-cover h-[70vh] md-[60vh]"
             />
 
-            <div className="lg:inline absolute mt-0 top-0 left-0 z-20 pt-40 xl:pt-52 lg:mt-40 bg-transparent h-full w-full bg-gradient-to-r from-gray-900/90 to-transparent p-10 space-y-5 text-white">
+            <div className="flex flex-col justify-center absolute mt-0 top-0 left-0 z-20 bg-transparent h-full w-full bg-gradient-to-r from-gray-900/90 to-transparent p-10 space-y-5 text-white">
               <h2 className="text-5xl font-bold max-w-xl z-50">
                 {movie.title}
               </h2>

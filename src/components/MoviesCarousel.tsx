@@ -20,7 +20,7 @@ function MoviesCarousel({ movies, title, isVertical }: Props) {
         )}
       >
         {isVertical
-          ? movies.map((movie) => (
+          ? movies.map((movie, index) => (
               <div
                 key={movie.id}
                 className={cn(
@@ -28,7 +28,7 @@ function MoviesCarousel({ movies, title, isVertical }: Props) {
                     "flex flex-col space-y-5 md:space-x-5 mb-5 items-center lg:flex-row"
                 )}
               >
-                <MovieCard movie={movie} />
+                <MovieCard movie={movie} lazyLoading={index > 2} />
                 <div>
                   <p className="font-bold">
                     {movie.title} ({movie.release_date?.split("-")[0]})
@@ -38,7 +38,9 @@ function MoviesCarousel({ movies, title, isVertical }: Props) {
                 </div>
               </div>
             ))
-          : movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
+          : movies.map((movie, index) => (
+              <MovieCard key={movie.id} movie={movie} lazyLoading={index > 1} />
+            ))}
       </div>
     </div>
   );
