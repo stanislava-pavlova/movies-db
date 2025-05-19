@@ -18,12 +18,13 @@ const getOptions = (cacheTime?: number): RequestInit => {
 
 async function fetchFromTMDB(
   url: URL,
+  sortingOption = "popularity.desc",
   cacheTime?: number
 ): Promise<SearchResults> {
   const locale = await getLocale();
   url.searchParams.set("include_adult", "false");
   url.searchParams.set("include_video", "false");
-  url.searchParams.set("sort_by", "popularity.desc");
+  url.searchParams.set("sort_by", sortingOption);
   url.searchParams.set("language", locale ?? "en-US");
   url.searchParams.set("page", "1");
 
@@ -56,13 +57,21 @@ export async function getPopularMovies() {
   return data.results;
 }
 
-export async function getDiscoverMovies(id?: string, keywords?: string) {
+export async function getDiscoverMovies({
+  id,
+  keywords,
+  sortingOption,
+}: {
+  id?: string;
+  keywords?: string;
+  sortingOption?: string;
+}) {
   const url = new URL("https://api.themoviedb.org/3/discover/movie");
 
   keywords && url.searchParams.set("with_keywords", keywords);
   id && url.searchParams.set("with_genres", id);
 
-  const data = await fetchFromTMDB(url);
+  const data = await fetchFromTMDB(url, sortingOption);
 
   return data.results;
 }

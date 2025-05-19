@@ -11,12 +11,15 @@ type Props = {
   };
   searchParams: {
     genre: string;
+    sort_by: string;
   };
 };
 
-async function GenrePage({ params: { id }, searchParams: { genre } }: Props) {
-  const movies = await getDiscoverMovies(id);
-
+async function GenrePage({
+  params: { id },
+  searchParams: { genre, sort_by },
+}: Props) {
+  const movies = await getDiscoverMovies({ id, sortingOption: sort_by });
   const t = await getTranslations("common");
 
   return (
@@ -30,7 +33,7 @@ async function GenrePage({ params: { id }, searchParams: { genre } }: Props) {
 
         <div className="flex justify-between items-center !mb-6">
           <h2 className="text-3xl font-semibold py-2">{t("movies")}</h2>
-          <SortDropdown genre={genre} id={id} />
+          <SortDropdown baseLink={`genre/${id}?genre=${genre}&sort_by=`} />
         </div>
 
         <MoviesCarousel movies={movies} isVertical />

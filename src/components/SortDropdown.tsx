@@ -14,13 +14,7 @@ const sortLabels: Record<keyof typeof SortOptions, string> = {
   titleDesc: "sort.titleDesc",
 };
 
-export const SortDropdown = async ({
-  id,
-  genre,
-}: {
-  id: string;
-  genre: string;
-}) => {
+export const SortDropdown = async ({ baseLink }: { baseLink: string }) => {
   const t = await getTranslations("common");
 
   return (
@@ -30,11 +24,7 @@ export const SortDropdown = async ({
       buttonClassName="rounded-md px-4 bg-popover h-11"
     >
       {Object.entries(SortOptions).map(([key, value]) => (
-        <Link
-          key={value}
-          href={`/genre/${id}?genre=${genre}&sort_by=${value}`}
-          prefetch={false}
-        >
+        <Link key={value} href={`/${baseLink}${value}`} prefetch={false}>
           <DropdownMenuItem className="cursor-pointer">
             {t(sortLabels[key as keyof typeof SortOptions])}
           </DropdownMenuItem>
