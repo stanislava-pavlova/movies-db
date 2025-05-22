@@ -39,7 +39,7 @@ function MoviesCarousel({ movies, title, isVertical }: Props) {
               </div>
             ))
           : movies.map((movie, index) => (
-              <MovieCard key={movie.id} movie={movie} lazyLoading={index > 1} />
+              <MovieCard key={movie.id} movie={movie} lazyLoading={index > 2} />
             ))}
       </div>
     </div>
