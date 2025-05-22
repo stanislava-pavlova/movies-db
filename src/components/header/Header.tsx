@@ -24,6 +24,7 @@ export default async function Header() {
             alt="Logo"
             width={180}
             height={30}
+            loading="eager"
             className="cursor-pointer"
           />
         </Link>
