@@ -1,3 +1,4 @@
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import "./globals.css";
@@ -44,6 +45,7 @@ export default async function RootLayout({
           >
             <Header />
             {children}
+            <SpeedInsights />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
