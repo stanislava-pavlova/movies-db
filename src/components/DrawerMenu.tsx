@@ -29,7 +29,7 @@ async function DrawerMenu({
   return (
     <Drawer>
       <DrawerTrigger asChild>
-        <Button variant="outline" size="icon">
+        <Button variant="outline" size="icon" aria-label="Open menu">
           <Menu className="h-5 w-5" />
         </Button>
       </DrawerTrigger>
