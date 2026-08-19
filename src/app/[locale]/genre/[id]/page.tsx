@@ -28,7 +28,7 @@ async function GenrePage({ params, searchParams }: Props) {
           {t("resultsFor")} {genre}
         </h1>
 
-        <AISuggestions term={genre} />
+        {genre && <AISuggestions term={genre} />}
 
         <div className="flex justify-between items-center !mb-6">
           <h2 className="text-3xl font-semibold py-2">{t("movies")}</h2>
