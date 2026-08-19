@@ -1,6 +1,7 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { getLocale } from "next-intl/server";
 
+import { tmdbLocaleMapping } from "@/src/i18n/routing";
 import { Genre, SearchResults } from "@/types";
 
 const getOptions = (cacheTime?: number): RequestInit => {
@@ -19,13 +20,14 @@ const getOptions = (cacheTime?: number): RequestInit => {
 async function fetchFromTMDB(
   url: URL,
   sortingOption = "popularity.desc",
-  cacheTime?: number
+  cacheTime?: number,
 ): Promise<SearchResults> {
   const locale = await getLocale();
+  const tmdbLocale = tmdbLocaleMapping[locale] ?? "en-US";
   url.searchParams.set("include_adult", "false");
   url.searchParams.set("include_video", "false");
   url.searchParams.set("sort_by", sortingOption);
-  url.searchParams.set("language", locale ?? "en-US");
+  url.searchParams.set("language", tmdbLocale);
   url.searchParams.set("page", "1");
 
   const options = getOptions(cacheTime);
@@ -91,7 +93,7 @@ export async function getGenres(): Promise<Genre[]> {
 
   const options = getOptions();
   const locale = await getLocale();
-  url.searchParams.set("language", locale ?? "en-US");
+  url.searchParams.set("language", tmdbLocaleMapping[locale] ?? "en-US");
 
   const response = await fetch(url.toString(), options);
   const data = await response.json();
@@ -114,3 +116,4 @@ export async function genearateAI(term: string | null, locale: string) {
 
   return text;
 }
+
