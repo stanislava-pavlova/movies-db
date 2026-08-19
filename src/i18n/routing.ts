@@ -2,26 +2,15 @@ import { createNavigation } from "next-intl/navigation";
 import { defineRouting } from "next-intl/routing";
 
 export const routing = defineRouting({
-  // A list of all locales that are supported
-  locales: ["en-US", "bg-BG"],
-
-  // Used when no locale matches
-  defaultLocale: "en-US",
-  localePrefix: {
-    mode: "always",
-    prefixes: {
-      "en-US": "/en",
-      "bg-BG": "/bg",
-    },
-  },
+  locales: ["en", "bg"],
+  defaultLocale: "en",
+  localePrefix: "always",
 });
 
-// Lightweight wrappers around Next.js' navigation APIs
-// that will consider the routing configuration
 export const { Link, redirect, usePathname, useRouter, getPathname } =
   createNavigation(routing);
 
-export const localeMapping: Record<string, string> = {
-  "en-US": "en",
-  "bg-BG": "bg",
+export const tmdbLocaleMapping: Record<string, string> = {
+  en: "en-US",
+  bg: "bg-BG",
 };

@@ -6,12 +6,14 @@ import MoviesCarousel from "@/src/components/MoviesCarousel";
 import { getPopularMovies, getSearchMovies } from "@/src/lib/getMovies";
 
 type Props = {
-  params: {
+  params: Promise<{
     term: string;
-  };
+  }>;
 };
 
-async function SearchPage({ params: { term } }: Props) {
+async function SearchPage({ params }: Props) {
+  const { term } = await params;
+
   if (!term) notFound();
 
   const t = await getTranslations("common");

@@ -6,19 +6,18 @@ import { SortDropdown } from "@/src/components/SortDropdown";
 import { getDiscoverMovies } from "@/src/lib/getMovies";
 
 type Props = {
-  params: {
+  params: Promise<{
     id: string;
-  };
-  searchParams: {
-    genre: string;
-    sort_by: string;
-  };
+  }>;
+  searchParams: Promise<{
+    genre?: string;
+    sort_by?: string;
+  }>;
 };
 
-async function GenrePage({
-  params: { id },
-  searchParams: { genre, sort_by },
-}: Props) {
+async function GenrePage({ params, searchParams }: Props) {
+  const { id } = await params;
+  const { genre, sort_by } = await searchParams;
   const movies = await getDiscoverMovies({ id, sortingOption: sort_by });
   const t = await getTranslations("common");
 
@@ -29,7 +28,7 @@ async function GenrePage({
           {t("resultsFor")} {genre}
         </h1>
 
-        <AISuggestions term={genre} />
+        {genre && <AISuggestions term={genre} />}
 
         <div className="flex justify-between items-center !mb-6">
           <h2 className="text-3xl font-semibold py-2">{t("movies")}</h2>
