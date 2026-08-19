@@ -6,7 +6,7 @@ import { getMessages } from "next-intl/server";
 
 import Header from "@/src/components/header/Header";
 import { ThemeProvider } from "@/src/components/providers/ThemeProvider";
-import { localeMapping, routing } from "@/src/i18n/routing";
+import { routing } from "@/src/i18n/routing";
 
 import type { Metadata } from "next";
 
@@ -16,25 +16,30 @@ export const metadata: Metadata = {
     "Discover your next favorite movie or series with NextMov. This platform uses TMDb data and offers an AI assistant for personalized suggestions based on your input.",
 };
 
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
 export default async function RootLayout({
   children,
-  params: { locale },
+  params,
 }: Readonly<{
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }>) {
+  const { locale } = await params;
+
   // Ensure that the incoming `locale` is valid
-  if (!routing.locales.includes(locale as any)) {
+  if (!routing.locales.includes(locale as (typeof routing.locales)[number])) {
     notFound();
   }
 
   // Providing all messages to the client
   // side is the easiest way to get started
   const messages = await getMessages();
-  const language = localeMapping[locale] || locale;
 
   return (
-    <html lang={language}>
+    <html lang={locale} suppressHydrationWarning>
       <body className="bg-white dark:bg-[#1A1C29]">
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider

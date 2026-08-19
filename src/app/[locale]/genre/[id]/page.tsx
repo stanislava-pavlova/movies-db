@@ -6,19 +6,18 @@ import { SortDropdown } from "@/src/components/SortDropdown";
 import { getDiscoverMovies } from "@/src/lib/getMovies";
 
 type Props = {
-  params: {
+  params: Promise<{
     id: string;
-  };
-  searchParams: {
-    genre: string;
-    sort_by: string;
-  };
+  }>;
+  searchParams: Promise<{
+    genre?: string;
+    sort_by?: string;
+  }>;
 };
 
-async function GenrePage({
-  params: { id },
-  searchParams: { genre, sort_by },
-}: Props) {
+async function GenrePage({ params, searchParams }: Props) {
+  const { id } = await params;
+  const { genre, sort_by } = await searchParams;
   const movies = await getDiscoverMovies({ id, sortingOption: sort_by });
   const t = await getTranslations("common");
 
