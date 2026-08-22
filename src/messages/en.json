@@ -26,5 +26,14 @@
       "titleDesc": "Title (Z → A)",
       "titleAsc": "Title (A → Z)"
     }
+  },
+  "auth": {
+    "account": "Account",
+    "signInTitle": "Welcome to NextMov",
+    "signInDescription": "Sign in to save your watchlist and get personalized recommendations.",
+    "signInWithGoogle": "Sign in with Google",
+    "signOut": "Sign out",
+    "openAuthDialog": "Open sign in options",
+    "openAccountMenu": "Open account menu"
   }
 }

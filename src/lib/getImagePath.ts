@@ -4,5 +4,5 @@ export const getImagePath = ({
   fullSize,
 }: { imagePath?: string; size?: string; fullSize?: boolean } = {}) =>
   imagePath
-    ? `http://image.tmdb.org/t/p/${fullSize ? "original" : size}/${imagePath}`
+    ? `https://image.tmdb.org/t/p/${fullSize ? "original" : size}/${imagePath}`
     : "/fallback-img.webp";
