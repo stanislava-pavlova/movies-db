@@ -2,8 +2,8 @@
 
 import * as React from "react";
 
+import { useTheme } from "@teispace/next-themes";
 import { Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
 
 import { Button } from "@/src/components/ui/button";
 import {

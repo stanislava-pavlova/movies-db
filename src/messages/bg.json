@@ -26,5 +26,14 @@
       "titleDesc": "Заглавие (Я → А)",
       "titleAsc": "Заглавие (А → Я)"
     }
+  },
+  "auth": {
+    "account": "Профил",
+    "signInTitle": "Добре дошли в NextMov",
+    "signInDescription": "Влезте, за да запазвате списъка си и да получавате персонализирани препоръки.",
+    "signInWithGoogle": "Вход с Google",
+    "signOut": "Изход",
+    "openAuthDialog": "Отвори опции за вход",
+    "openAccountMenu": "Отвори менюто на профила"
   }
 }
