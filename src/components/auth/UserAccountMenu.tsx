@@ -1,6 +1,6 @@
 "use client";
 
-import { LogOut, UserCircle } from "lucide-react";
+import { Bookmark, LogOut, UserCircle } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { signOutAction } from "@/src/actions/auth";
@@ -66,6 +66,12 @@ export default function UserAccountMenu({ user }: UserAccountMenuProps) {
           <Link href="/profile" className="flex cursor-pointer items-center">
             <UserCircle className="mr-2 h-4 w-4" />
             {t("account")}
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild>
+          <Link href="/watchlist" className="flex cursor-pointer items-center">
+            <Bookmark className="mr-2 h-4 w-4" />
+            {t("watchlistTitle")}
           </Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />

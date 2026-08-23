@@ -34,6 +34,11 @@
     "signInWithGoogle": "Вход с Google",
     "signOut": "Изход",
     "openAuthDialog": "Отвори опции за вход",
-    "openAccountMenu": "Отвори менюто на профила"
+    "openAccountMenu": "Отвори менюто на профила",
+    "librarySection": "Вашата библиотека",
+    "watchlistTitle": "Моят списък",
+    "watchlistDescription": "Филми, които сте запазили за по-късно.",
+    "watchlistEmptyStateTitle": "Списъкът ви е празен",
+    "watchlistEmptyStateDescription": "Разгледайте филми и натиснете иконата с отметка, за да запазите заглавия за по-късно."
   }
 }
