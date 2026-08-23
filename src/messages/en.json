@@ -34,6 +34,11 @@
     "signInWithGoogle": "Sign in with Google",
     "signOut": "Sign out",
     "openAuthDialog": "Open sign in options",
-    "openAccountMenu": "Open account menu"
+    "openAccountMenu": "Open account menu",
+    "librarySection": "Your library",
+    "watchlistTitle": "My Watchlist",
+    "watchlistDescription": "Movies you've saved to watch later.",
+    "watchlistEmptyStateTitle": "Your watchlist is empty",
+    "watchlistEmptyStateDescription": "Browse movies and tap the bookmark icon to save titles you want to watch later."
   }
 }
