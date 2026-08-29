@@ -40,5 +40,9 @@
     "watchlistDescription": "Movies you've saved to watch later.",
     "watchlistEmptyStateTitle": "Your watchlist is empty",
     "watchlistEmptyStateDescription": "Browse movies and tap the bookmark icon to save titles you want to watch later."
+  },
+  "watchlist": {
+    "add": "Add to watchlist",
+    "remove": "Remove from watchlist"
   }
 }

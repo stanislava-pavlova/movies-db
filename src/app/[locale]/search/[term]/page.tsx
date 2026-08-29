@@ -1,9 +1,11 @@
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 
+import { auth } from "@/src/auth";
 import AISuggestions from "@/src/components/AISuggestions";
 import MoviesCarousel from "@/src/components/MoviesCarousel";
 import { getPopularMovies, getSearchMovies } from "@/src/lib/getMovies";
+import { getWatchlistMovieIds } from "@/src/lib/watchlist";
 
 type Props = {
   params: Promise<{
@@ -18,9 +20,13 @@ async function SearchPage({ params }: Props) {
 
   const t = await getTranslations("common");
   const termToUse = decodeURI(term);
+  const session = await auth();
 
-  const movies = await getSearchMovies(termToUse);
-  const popularMovies = await getPopularMovies();
+  const [movies, popularMovies, watchlistedIds] = await Promise.all([
+    getSearchMovies(termToUse),
+    getPopularMovies(),
+    session?.user?.id ? getWatchlistMovieIds(session.user.id) : undefined,
+  ]);
 
   return (
     <div className="max-w-screen-2xl mx-auto px-5 md:px-10">
@@ -31,8 +37,17 @@ async function SearchPage({ params }: Props) {
 
         <AISuggestions term={termToUse} />
 
-        <MoviesCarousel title={t("movies")} movies={movies} isVertical />
-        <MoviesCarousel title={t("mayAlsoLike")} movies={popularMovies} />
+        <MoviesCarousel
+          title={t("movies")}
+          movies={movies}
+          isVertical
+          watchlistedIds={watchlistedIds}
+        />
+        <MoviesCarousel
+          title={t("mayAlsoLike")}
+          movies={popularMovies}
+          watchlistedIds={watchlistedIds}
+        />
       </div>
     </div>
   );

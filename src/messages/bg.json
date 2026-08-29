@@ -40,5 +40,9 @@
     "watchlistDescription": "Филми, които сте запазили за по-късно.",
     "watchlistEmptyStateTitle": "Списъкът ви е празен",
     "watchlistEmptyStateDescription": "Разгледайте филми и натиснете иконата с отметка, за да запазите заглавия за по-късно."
+  },
+  "watchlist": {
+    "add": "Добави в списъка",
+    "remove": "Премахни от списъка"
   }
 }
