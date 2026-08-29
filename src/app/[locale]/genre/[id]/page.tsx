@@ -1,9 +1,11 @@
 import { getTranslations } from "next-intl/server";
 
+import { auth } from "@/src/auth";
 import AISuggestions from "@/src/components/AISuggestions";
 import MoviesCarousel from "@/src/components/MoviesCarousel";
 import { SortDropdown } from "@/src/components/SortDropdown";
 import { getDiscoverMovies } from "@/src/lib/getMovies";
+import { getWatchlistMovieIds } from "@/src/lib/watchlist";
 
 type Props = {
   params: Promise<{
@@ -18,8 +20,13 @@ type Props = {
 async function GenrePage({ params, searchParams }: Props) {
   const { id } = await params;
   const { genre, sort_by } = await searchParams;
-  const movies = await getDiscoverMovies({ id, sortingOption: sort_by });
+  const session = await auth();
   const t = await getTranslations("common");
+
+  const [movies, watchlistedIds] = await Promise.all([
+    getDiscoverMovies({ id, sortingOption: sort_by }),
+    session?.user?.id ? getWatchlistMovieIds(session.user.id) : undefined,
+  ]);
 
   return (
     <div className="max-w-screen-2xl mx-auto px-5 md:px-10">
@@ -35,7 +42,11 @@ async function GenrePage({ params, searchParams }: Props) {
           <SortDropdown baseLink={`genre/${id}?genre=${genre}&sort_by=`} />
         </div>
 
-        <MoviesCarousel movies={movies} isVertical />
+        <MoviesCarousel
+          movies={movies}
+          isVertical
+          watchlistedIds={watchlistedIds}
+        />
       </div>
     </div>
   );
